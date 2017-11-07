@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#TODO: Automate this whole process...
+
+# Sets default gateway for USB internet sharing.
+sudo /sbin/route add default gw 192.168.7.1
+
+# Sets nameservers for USB internet sharing.
+echo "domain localdomain" > temp.conf
+echo "search localdomain" > temp.conf
+echo "nameserver 8.8.8.8" > temp.conf
+echo "nameserver 8.8.4.4" > temp.conf
+sudo cp temp.conf /run/connman/resolv.conf
+rm -f temp.conf
